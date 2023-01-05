@@ -1,0 +1,60 @@
+
+ :root {
+    --primary-color: #ffffff;
+    --secondary-color: #7CBEB4; 
+    --third-color: #F4EA82;
+    --dark-grey: #2b2b2b;
+    --font-family: 'Rubik', sans-serif;
+    --visited-link: #E0827E; ;
+  }
+  
+   body {
+      font-family: var(  --font-family);
+      font-weight: 300;
+      font-size: 16px;
+      color: var( --dark-grey);
+      background-color:var( --primary-color);
+      line-height: 1.6;
+    }
+  
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color:var( --dark-grey);
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 300;
+    color:var( --dark-grey);
+  }
+  
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color:var( --dark-grey);
+  }
+  
+  a {
+      color: var( --secondary-color);
+   
+    }
+    a:visited {
+      /* visited link */
+      color: var( --visited-link);
+    }
+  
+    
+  a:hover, a:focus {
+    color: var( --third-color);
+    text-decoration: none;
+    
+  }
+
+  .logo {
+    size: 50%;
+    margin-right: 40px;
+    object-fit: cover;
+  }
+    
+  
