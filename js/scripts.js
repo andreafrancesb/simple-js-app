@@ -1,5 +1,10 @@
+//Wrap your pokemonList array in an IIFE.
+//Create a new pokemonRepository variable to hold what your IIFE will return.
+//Assign the IIFE to that variable.
 
-    let pokemonList = [
+let pokemonRepository = (function () {
+   
+   let pokemonList = [
         { id: 1, name: 'Bulbasaur', hp: 45, height: 0.7, types: ['grass', 'poison']},
         { id: 2, name: 'Ivysaur', hp: 60, height: 1, types: ['grass', 'poison']},
         { id: 3, name: 'Venusaur', hp: 80, height: 2, types: ['grass', 'poison']},
@@ -7,10 +12,28 @@
         { id: 5, name: 'Charmeleon', hp: 58, height: 1.1, types: ['fire']},
         { id: 6, name: 'Charizard', hp: 78, height: 1.7, types: ['fire', 'flying']},
         { id: 7, name: 'Squirtle', hp: 44, height: 0.5, types: ['water']},
-]
+];
 
-pokemonList.forEach(function(item) { 
-    document.write(item.name + " - " + item.height + "<br>");
+function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+function getAll() {
+    return pokemonList;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+})()
+
+//Use a forEach() function instead of the for loop you have to iterate over the Pokémon in your pokemonList array.
+//Update the loop code to cope with the new changes. 
+//Use one of the two functions returned by the IIFE in order to retrieve the pokemonList array.
+
+pokemonRepository.getAll().forEach(function(pokemon) { 
+    document.write(pokemon.name + " - " + pokemon.height + "<br>");
 
 });
 
