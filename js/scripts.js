@@ -1,7 +1,3 @@
-//Wrap your pokemonList array in an IIFE.
-//Create a new pokemonRepository variable to hold what your IIFE will return.
-//Assign the IIFE to that variable.
-
 let pokemonRepository = (function () {
    
    let pokemonList = [
@@ -15,39 +11,48 @@ let pokemonRepository = (function () {
 ];
 
 function add(pokemon) {
+  if (
+    typeof pokemon === "object" &&
+    "name" in pokemon &&
+    "height" in pokemon &&
+    "types" in pokemon
+  ) {
     pokemonList.push(pokemon);
+  } else {
+    console.log("pokemon is not correct");
   }
+}
 
 function getAll() {
-    return pokemonList;
-  }
+  return pokemonList;
+}
 
-  return {
-    add: add,
-    getAll: getAll
-  };
-})()
+function addListItem(pokemon){
+  let pokemonList = document.querySelector(".pokemon-list");
+  let listpokemon = document.createElement("li");
+  let button = document.createElement("button");
+  button.addEventListener('click', showDetails(pokemon));
+  button.innerText = pokemon.name;
+  button.classList.add("button-class");
+  listpokemon.appendChild(button);
+  pokemonList.appendChild(listpokemon);
+}
 
-//Use a forEach() function instead of the for loop you have to iterate over the Pokémon in your pokemonList array.
-//Update the loop code to cope with the new changes. 
-//Use one of the two functions returned by the IIFE in order to retrieve the pokemonList array.
+function showDetails(pokemon) {
+console.log (pokemon.name)
+}
 
-pokemonRepository.getAll().forEach(function(pokemon) { 
-    document.write(pokemon.name + " - " + pokemon.height + "<br>");
+return {
+  add: add,
+  getAll: getAll,
+  addListItem: addListItem
+};
+})();
 
+pokemonRepository.add({ name: "Pikachu", height: 0.3, types: ["electric"] });
+
+console.log(pokemonRepository.getAll());
+
+pokemonRepository.getAll().forEach(function (pokemon) {
+pokemonRepository.addListItem(pokemon);
 });
-
-  /* Loop to display pokemon and highlight sizes */
-
-    //for (let i = 0;
-      //i < pokemonList.height; i++) {
-      //if(pokemonList[i].height >= 2) {
-          //document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + " m) - Woah, that is a big pokemon!" + "<br>")
-      //}
-      //else if (pokemonList[i].height >= 2 && pokemonList[i].height < 5){
-          //document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + " m) - This is a medium pokemon." + "<br>")
-    //  p[;] //}
-      //else {
-          //document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + " m) - This is a small pokemon." + "<br>")
-      //}
-  //}
