@@ -13,7 +13,7 @@ let pokemonRepository = (function () {
   }
 
 function getAll() {
-  return pokemonList;
+  return pokemonArray;
 }
 
 function addListItem(pokemon){
@@ -26,22 +26,6 @@ function addListItem(pokemon){
   listpokemon.appendChild(button);
   pokemonList.appendChild(listpokemon);
 }
-
-return {
-  add: add,
-  getAll: getAll,
-  addListItem: addListItem
-};
-})();
-
-pokemonRepository.add({ name: "Pikachu", height: 0.3, types: ["electric"] });
-
-console.log(pokemonRepository.getAll());
-
-pokemonRepository.getAll().forEach(function (pokemon) {
-pokemonRepository.addListItem(pokemon);
-});
-
 
 function loadList() {
   return fetch(apiUrl)
@@ -81,17 +65,17 @@ console.log (pokemon.name)
 });
 };
 
-
-fetch('https://pokeapi.co/api/v2/pokemon/').then(function (response) {
-  return response.json();
-}).then(function (pokemonList) {
-  console.log(pokemonList);
-}).catch(function () {
-});
+return {
+  add: add,
+  getAll: getAll,
+  addListItem: addListItem,
+  loadDetails: loadDetails,
+  loadList: loadList,
+};
+})();
 
 pokemonRepository.loadList().then(function(){
   pokemonRepository.getAll().forEach(function(pokemon){
-    pokemonRepository.addPokemonItem(pokemon)
+    pokemonRepository.addListItem(pokemon)
   });
 });
-
