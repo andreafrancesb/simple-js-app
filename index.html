@@ -19,7 +19,37 @@
   <body>
     <img src="images/pokedex.png" width= 20% class="logo" alt="pokedex logo">
     <div></div>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="images/meowth.png" width="95" height="95" alt="meowth">
+        Pokedex
+      </a>
+    </nav>
     <ul class='pokemon-list'></ul>
+    <div
+    id="modal-container"
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modal-title"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        
+          <h5 class="modal-title"></h5>
+          <div id="button-container"></div>
+         </div>
+        <div class="modal-body">
+          <p class=" image-container"></p>
+          <p class="height"></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="footer-link" href="#"> <img src="images/meowth.png"  width="50" height= "50" > Back to Top </a>
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
     <script src="js/scripts.js"></script>
